@@ -1,561 +1,474 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contigo · Aniversario</title>
-  <!-- Fuentes sofisticadas -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@200;400;500;600&display=swap" rel="stylesheet">
-  <!-- Font Awesome 6 (gratuito) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    /* RESET MODERNO */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      background-color: #faf7f5;  /* base cálida y neutra */
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      color: #2e2b2c;
-      line-height: 1.5;
-      scroll-behavior: smooth;
-    }
-
-    /* contenedor principal: maximalista en espacio, minimalista en decoración */
-    .container {
-      max-width: 1300px;
-      margin: 0 auto;
-      padding: 3rem 2rem;
-    }
-
-    /* tipografías de contraste */
-    h1, h2, h3, .serif {
-      font-family: 'DM Serif Display', serif;
-      font-weight: 400;
-      letter-spacing: -0.02em;
-    }
-
-    /* ENCABEZADO – limpio, solo texto + línea sutil */
-    .header {
-      text-align: center;
-      margin-bottom: 5rem;
-      opacity: 0;
-      animation: aparecer 1.2s ease forwards;
-    }
-
-    .header h1 {
-      font-size: clamp(3rem, 10vw, 5.5rem);
-      color: #1b1b1b;
-      line-height: 1.1;
-      margin-bottom: 1rem;
-    }
-
-    .header h1 span {
-      display: block;
-      font-style: italic;
-      color: #a05a7c;        /* rosa tirando a ciruela */
-      font-size: 0.7em;
-      margin-top: 0.2rem;
-    }
-
-    .header p {
-      font-size: 1.3rem;
-      font-weight: 300;
-      color: #6f5e66;
-      max-width: 600px;
-      margin: 1.5rem auto 0;
-      border-top: 2px solid #ecd9d1;
-      padding-top: 1.8rem;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      word-spacing: 6px;
-    }
-
-    /* SECCIÓN DE FOTOS (GALERÍA PROTAGONISTA) */
-    .gallery-section {
-      margin: 5rem 0 8rem;
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-    }
-
-    /* cada foto ocupa su espacio — las imágenes serán las reinas */
-    .photo-frame {
-      background: #ffffff;
-      padding: 1rem 1rem 2.5rem 1rem;
-      box-shadow: 0 20px 35px -15px rgba(90, 60, 70, 0.15);
-      transition: all 0.35s cubic-bezier(0.15, 0.75, 0.45, 1);
-      border-radius: 3px;
-      transform: rotate(0deg);
-      border: 1px solid #f1e2db;
-    }
-
-    .photo-frame:nth-child(odd) {
-      transform: rotate(-1deg);
-    }
-
-    .photo-frame:nth-child(even) {
-      transform: rotate(1.5deg);
-      margin-top: 1.2rem;
-    }
-
-    .photo-frame:hover {
-      transform: rotate(0deg) scale(1.02);
-      box-shadow: 0 30px 45px -15px #b2918f;
-      border-color: #d9b2b0;
-    }
-
-    .photo-frame img {
-      width: 100%;
-      height: auto;
-      aspect-ratio: 3 / 4;
-      object-fit: cover;
-      display: block;
-      border-radius: 2px;
-      background: #ede0d8;
-    }
-
-    .photo-frame .caption {
-      text-align: center;
-      margin-top: 1rem;
-      font-size: 0.95rem;
-      font-weight: 400;
-      color: #836f73;
-      letter-spacing: 1px;
-      font-style: italic;
-    }
-
-    /* FRASES ELEGANTES ENTRE FOTOS */
-    .love-note {
-      max-width: 750px;
-      margin: 5rem auto;
-      text-align: center;
-      padding: 2rem;
-      border-top: 2px solid #ead3cc;
-      border-bottom: 2px solid #ead3cc;
-    }
-
-    .love-note p {
-      font-family: 'DM Serif Display', serif;
-      font-size: 2.2rem;
-      color: #3d2e35;
-      line-height: 1.4;
-    }
-
-    .love-note i {
-      color: #ba7c92;
-      margin: 0 1rem;
-      font-size: 1.8rem;
-      opacity: 0.7;
-    }
-
-    /* línea divisora sutil */
-    .separator {
-      width: 120px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, #cdb2b0, transparent);
-      margin: 5rem auto;
-    }
-
-    /* BLOQUES DE TEXTO – minimal, mucho espacio */
-    .message-block {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      max-width: 850px;
-      margin: 0 auto 5rem;
-      padding: 2rem;
-      background: rgba(255, 247, 242, 0.6);
-      border-radius: 60px 20px 60px 20px;
-      transition: background 0.2s;
-    }
-
-    .message-block:hover {
-      background: #fffbf9;
-    }
-
-    .message-block h2 {
-      font-size: 3rem;
-      color: #a05a7c;
-      margin-bottom: 1.5rem;
-      font-weight: 400;
-      border-bottom: 1px solid #f0cfc5;
-      padding-bottom: 0.5rem;
-      display: inline-block;
-    }
-
-    .message-block p {
-      font-size: 1.4rem;
-      font-weight: 300;
-      color: #44373c;
-      text-align: center;
-      line-height: 1.7;
-    }
-
-    .message-block i {
-      color: #c8819b;
-      margin: 0 6px;
-    }
-
-    /* SECCIÓN QR + MÚSICA – elegante y funcional */
-    .music-qr-wrap {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 3rem;
-      justify-content: center;
-      align-items: center;
-      margin: 6rem 0 4rem;
-      background: #fefcfb;
-      padding: 3rem 2.5rem;
-      border-radius: 60px;
-      box-shadow: 0 5px 25px rgba(160, 90, 124, 0.08);
-    }
-
-    .qr-box {
-      flex: 1 1 280px;
-      text-align: center;
-    }
-
-    .qr-box h3 {
-      font-size: 2rem;
-      color: #2e2b2c;
-      margin-bottom: 1.5rem;
-    }
-
-    .qr-svg {
-      width: 200px;
-      height: 200px;
-      margin: 0 auto 1.5rem;
-      background: white;
-      padding: 1rem;
-      border-radius: 30px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-      border: 1px solid #eacec9;
-    }
-
-    .qr-svg svg {
-      width: 100%;
-      height: 100%;
-    }
-
-    .qr-note {
-      color: #6e5c62;
-      font-size: 1rem;
-    }
-
-    .music-box {
-      flex: 2 1 350px;
-    }
-
-    .music-box h3 {
-      font-size: 2rem;
-      color: #2e2b2c;
-      margin-bottom: 1rem;
-    }
-
-    .music-embed {
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 5px 20px rgba(129, 80, 100, 0.1);
-      margin: 1.5rem 0 1rem;
-    }
-
-    .music-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-
-    .music-link {
-      background: #f2e9e5;
-      color: #532f3f;
-      padding: 0.8rem 1.8rem;
-      border-radius: 40px;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 1rem;
-      transition: all 0.2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.7rem;
-      border: 1px solid transparent;
-    }
-
-    .music-link:hover {
-      background: #e1cfca;
-      border-color: #b18194;
-      color: #231b1f;
-    }
-
-    .music-link i {
-      font-size: 1.3rem;
-    }
-
-    /* VIDEO opcional pero armonioso */
-    .video-wrapper {
-      max-width: 800px;
-      margin: 4rem auto;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 20px 35px -10px rgba(60, 40, 50, 0.2);
-      border: 1px solid #e2cdc7;
-    }
-
-    .video-wrapper iframe {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      display: block;
-    }
-
-    /* mensaje final */
-    .final {
-      text-align: center;
-      padding: 4rem 1rem;
-      background: #f7f0ec;
-      border-radius: 100px 20px 100px 20px;
-      margin: 6rem 0 2rem;
-    }
-
-    .final h2 {
-      font-size: 3.5rem;
-      color: #1f1b1c;
-      margin-bottom: 1rem;
-    }
-
-    .final p {
-      font-size: 1.6rem;
-      color: #755f67;
-      font-weight: 300;
-    }
-
-    .final .signature {
-      font-family: 'DM Serif Display', serif;
-      font-size: 2.2rem;
-      color: #a86f86;
-      margin-top: 2rem;
-    }
-
-    footer {
-      text-align: center;
-      color: #ad929b;
-      padding: 3rem 0 1rem;
-      font-size: 0.95rem;
-      border-top: 1px solid #ecd9d1;
-    }
-
-    /* animación */
-    @keyframes aparecer {
-      0% { opacity: 0; transform: translateY(15px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-
-    /* responsive */
-    @media (max-width: 900px) {
-      .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-      }
-      .message-block p {
-        font-size: 1.3rem;
-      }
-    }
-
-    @media (max-width: 550px) {
-      .gallery-grid {
-        grid-template-columns: 1fr;
-        max-width: 380px;
-        margin: 0 auto;
-      }
-      .photo-frame:nth-child(even) {
-        margin-top: 0;
-      }
-      .love-note p {
-        font-size: 1.8rem;
-      }
-      .final h2 {
-        font-size: 2.6rem;
-      }
-    }
-
-    /* imagen por defecto mientras no existan archivos */
-    .photo-frame img:not([src*=".jpeg"]):not([src*=".jpg"]):not([src*=".png"]) {
-      background: linear-gradient(145deg, #f0dbd5, #f7e5df);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #a4818a;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Aniversario | Nuestra historia 💜</title>
+    
+    <!-- Fuentes -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0f;
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        /* Header */
+        .hero {
+            text-align: center;
+            margin-bottom: 50px;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5em;
+            background: linear-gradient(135deg, #c084fc, #a855f7, #7e22ce);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+        
+        .hero p {
+            color: #9ca3af;
+            font-size: 1.2em;
+            letter-spacing: 3px;
+        }
+        
+        /* Video principal de YouTube (música automática) */
+        .main-video-container {
+            max-width: 900px;
+            margin: 40px auto 60px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 40px -10px rgba(0, 0, 0, 0.9);
+            border: 2px solid rgba(168, 85, 247, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .main-video-container:hover {
+            border-color: #a855f7;
+            box-shadow: 0 30px 50px -10px rgba(168, 85, 247, 0.4);
+        }
+        
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 */
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Divisor temático */
+        .divider {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #a855f7, #c084fc, #a855f7, transparent);
+            margin: 60px auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
+            color: #c084fc;
+            margin: 40px 0;
+            font-weight: 400;
+            position: relative;
+        }
+        
+        .section-title i {
+            margin: 0 15px;
+            color: #a855f7;
+            font-size: 0.8em;
+        }
+        
+        /* Mensajes románticos */
+        .message {
+            max-width: 800px;
+            margin: 0 auto 50px;
+            text-align: center;
+            padding: 40px;
+            background: rgba(18, 18, 24, 0.6);
+            border-radius: 30px;
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            backdrop-filter: blur(8px);
+            transition: transform 0.3s ease;
+        }
+        
+        .message:hover {
+            transform: translateY(-5px);
+            border-color: rgba(168, 85, 247, 0.5);
+        }
+        
+        .message h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            color: #c084fc;
+            margin-bottom: 20px;
+        }
+        
+        .message p {
+            font-size: 1.3em;
+            line-height: 1.8;
+            color: #d0d0d0;
+        }
+        
+        /* GALERÍA DE FOTOS - MÚLTIPLES (foto01, foto02, etc) */
+        .photos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .photo-card {
+            background: rgba(18, 18, 24, 0.4);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        
+        .photo-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: #a855f7;
+            box-shadow: 0 20px 30px -10px rgba(168, 85, 247, 0.4);
+        }
+        
+        .photo-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            border-bottom: 2px solid rgba(168, 85, 247, 0.3);
+        }
+        
+        .photo-info {
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .photo-info p {
+            color: #c084fc;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+        
+        /* GALERÍA DE VIDEOS - MÚLTIPLES (video01, video02, etc) */
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .video-card {
+            background: rgba(10, 10, 15, 0.8);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        
+        .video-card:hover {
+            transform: translateY(-5px);
+            border-color: #a855f7;
+            box-shadow: 0 20px 30px -5px rgba(168, 85, 247, 0.3);
+        }
+        
+        .video-card .video-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            background: #000;
+        }
+        
+        .video-card .video-container iframe,
+        .video-card .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .video-info {
+            padding: 15px;
+            text-align: center;
+            border-top: 1px solid rgba(168, 85, 247, 0.2);
+        }
+        
+        .video-info p {
+            color: #c084fc;
+            font-size: 1.1em;
+        }
+        
+        /* Mensaje final */
+        .final-message {
+            text-align: center;
+            padding: 80px 30px;
+            margin: 60px 0;
+            background: linear-gradient(145deg, rgba(18, 18, 24, 0.8), rgba(10, 10, 15, 0.9));
+            border-radius: 50px;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+        }
+        
+        .final-message h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5em;
+            color: #a855f7;
+            margin-bottom: 20px;
+        }
+        
+        .final-message p {
+            font-size: 1.5em;
+            color: #b0b0b0;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 50px 0 30px;
+            color: #6b7280;
+            border-top: 2px solid rgba(168, 85, 247, 0.1);
+            margin-top: 60px;
+        }
+        
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3em; }
+            .section-title { font-size: 2.2em; }
+            .message h2 { font-size: 2em; }
+            .message p { font-size: 1.1em; }
+            .final-message h3 { font-size: 2.5em; }
+        }
+        
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0a0f; }
+        ::-webkit-scrollbar-thumb { background: #2d2d3a; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #a855f7; }
+    </style>
 </head>
 <body>
+
 <div class="container">
-
-  <!-- ENCABEZADO PRINCIPAL (sutil, sin estorbos) -->
-  <div class="header">
-    <h1>
-      TÚ & YO
-      <span>— dos —</span>
-    </h1>
-    <p>Aniversario · todo este tiempo</p>
-  </div>
-
-  <!-- GALERÍA DE FOTOS (las fotos son lo primero) -->
-  <div class="gallery-section">
-    <div class="gallery-grid">
-      <!-- foto 1 -->
-      <div class="photo-frame">
-        <img src="foto1.jpeg" alt="nosotros" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22400%22%20viewBox%3D%220%200%20300%20400%22%3E%3Crect%20width%3D%22300%22%20height%3D%22400%22%20fill%3D%22%23f2e0da%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2220%22%20fill%3D%22%2390737b%22%3E📸%20foto%201%3C%2Ftext%3E%3C%2Fsvg%3E'">
-        <div class="caption">el principio</div>
-      </div>
-      <!-- foto 2 -->
-      <div class="photo-frame">
-        <img src="foto2.jpeg" alt="nosotros" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22400%22%20viewBox%3D%220%200%20300%20400%22%3E%3Crect%20width%3D%22300%22%20height%3D%22400%22%20fill%3D%22%23f2e0da%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2220%22%20fill%3D%22%2390737b%22%3E📸%20foto%202%3C%2Ftext%3E%3C%2Fsvg%3E'">
-        <div class="caption">risas</div>
-      </div>
-      <!-- foto 3 -->
-      <div class="photo-frame">
-        <img src="foto3.jpeg" alt="nosotros" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22400%22%20viewBox%3D%220%200%20300%20400%22%3E%3Crect%20width%3D%22300%22%20height%3D%22400%22%20fill%3D%22%23f2e0da%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2220%22%20fill%3D%22%2390737b%22%3E📸%20foto%203%3C%2Ftext%3E%3C%2Fsvg%3E'">
-        <div class="caption">cómplices</div>
-      </div>
-      <!-- foto 4 -->
-      <div class="photo-frame">
-        <img src="foto4.jpeg" alt="nosotros" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22400%22%20viewBox%3D%220%200%20300%20400%22%3E%3Crect%20width%3D%22300%22%20height%3D%22400%22%20fill%3D%22%23f2e0da%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2220%22%20fill%3D%22%2390737b%22%3E📸%20foto%204%3C%2Ftext%3E%3C%2Fsvg%3E'">
-        <div class="caption">siempre</div>
-      </div>
+    
+    <!-- HEADER ROMÁNTICO -->
+    <div class="hero">
+        <h1>Feliz Aniversario</h1>
+        <p>NUESTRA HISTORIA DE AMOR</p>
     </div>
-  </div>
-
-  <!-- FRASE ROMÁNTICA ENTRE FOTOS -->
-  <div class="love-note">
-    <i class="fas fa-asterisk"></i>
-    <p>Contigo el tiempo va despacio y a la vez vuela</p>
-    <i class="fas fa-asterisk"></i>
-  </div>
-
-  <!-- BLOQUES DE TEXTO ÍNTIMOS -->
-  <div class="message-block">
-    <h2>01 · tu nombre</h2>
-    <p>Es mi palabra favorita, la que repito en silencio cuando necesito calma.</p>
-  </div>
-
-  <div class="message-block">
-    <h2>02 · nuestra historia</h2>
-    <p>No es perfecta, pero es nuestra. Y cada capítulo contigo es el que más quiero leer.</p>
-  </div>
-
-  <!-- MÚSICA Y QR (elegante, sin romper el minimalismo) -->
-  <div class="music-qr-wrap">
-    <div class="qr-box">
-      <h3>guardar canción</h3>
-      <div class="qr-svg" id="qrAnimado">
-        <!-- QR generado en JS -->
-        <svg viewBox="0 0 100 100" style="width:100%; height:100%;"></svg>
-      </div>
-      <p class="qr-note"><i class="fas fa-camera"></i> escanea y llévate nuestra música</p>
+    
+    <!-- VIDEO PRINCIPAL CON MÚSICA (AUTOPLAY) -->
+    <div class="main-video-container">
+        <div class="video-wrapper">
+            <iframe 
+                src="https://www.youtube.com/embed/eM213aMKTHG?autoplay=1&rel=0"
+                title="Need You Now - Lady Antebellum"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
     </div>
-    <div class="music-box">
-      <h3>la canción</h3>
-      <p style="color:#6a4f59; margin-bottom: 0.5rem;">Need You Now · Lady Antebellum</p>
-      <!-- reproductor embed (usamos un iframe de Spotify muy limpio) -->
-      <div class="music-embed">
-        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5DOUFp2oQ3kOJBPjXK3b5n?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-      </div>
-      <div class="music-links">
-        <a href="https://open.spotify.com/track/5DOUFp2oQ3kOJBPjXK3b5n" target="_blank" class="music-link"><i class="fab fa-spotify"></i> Spotify</a>
-        <a href="https://music.apple.com/us/album/need-you-now/1440881203?i=1440881547" target="_blank" class="music-link"><i class="fab fa-apple"></i> Apple Music</a>
-        <a href="#" onclick="descargarMp3(); return false;" class="music-link"><i class="fas fa-download"></i> MP3 (idea)</a>
-      </div>
+    
+    <!-- MENSAJE ROMÁNTICO -->
+    <div class="message">
+        <h2>Mi persona favorita</h2>
+        <p>
+            "Cada momento a tu lado es un regalo. En tus ojos encontré mi hogar, 
+            en tu sonrisa mi paz, y en tu amor mi razón para sonreír cada día."
+        </p>
     </div>
-  </div>
-
-  <!-- VIDEO (opcional, pero armoniza) -->
-  <div class="video-wrapper">
-    <iframe 
-      src="https://www.youtube.com/embed/eM213aMKTHg?enablejsapi=1&rel=0" 
-      title="Need You Now"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-      allowfullscreen>
-    </iframe>
-  </div>
-
-  <!-- OTRO MENSAJE -->
-  <div class="love-note" style="border-bottom: none;">
-    <p><i class="fas fa-heart" style="font-size:1.8rem;"></i> 8 mil millones de personas, y todavía te elegiría a ti <i class="fas fa-heart" style="font-size:1.8rem;"></i></p>
-  </div>
-
-  <!-- FINAL EP 
-  <!-- le damos un cierre muy personal -->
-  <div class="final">
-    <h2>feliz aniversario</h2>
-    <p>gracias por cada día a mi lado</p>
-    <div class="signature">siempre tuya · siempre tuyo</div>
-    <div style="margin-top: 2rem; font-size: 2rem;">💜</div>
-  </div>
-
-  <footer>
-    <p>con todo el amor · nuestra historia continúa</p>
-    <p style="margin-top: 0.5rem; font-size:0.8rem;">hecho para ti, desde el corazón</p>
-  </footer>
-
+    
+    <div class="divider"></div>
+    
+    <!-- SECCIÓN DE FOTOS (foto01, foto02, foto03...) -->
+    <h2 class="section-title">
+        <i class="fas fa-camera"></i> NUESTRAS FOTOS <i class="fas fa-camera"></i>
+    </h2>
+    
+    <div class="photos-grid" id="photos-container">
+        <!-- Las fotos se cargarán automáticamente desde foto01 hasta foto99 -->
+    </div>
+    
+    <div class="divider"></div>
+    
+    <!-- SECCIÓN DE VIDEOS (video01, video02, video03...) -->
+    <h2 class="section-title">
+        <i class="fas fa-video"></i> NUESTROS VIDEOS <i class="fas fa-video"></i>
+    </h2>
+    
+    <div class="videos-grid" id="videos-container">
+        <!-- Los videos se cargarán automáticamente desde video01 hasta video99 -->
+    </div>
+    
+    <div class="divider"></div>
+    
+    <!-- SEGUNDO MENSAJE -->
+    <div class="message">
+        <h2>Eres único</h2>
+        <p>
+            "Entre 8 mil millones de personas, yo volvería a elegirte 
+            una y otra vez, en cada vida, en cada universo posible."
+        </p>
+    </div>
+    
+    <!-- MENSAJE FINAL -->
+    <div class="final-message">
+        <h3>Gracias por existir</h3>
+        <p>
+            Por todos los momentos que hemos vivido<br>
+            y por todos los que nos quedan por compartir.
+        </p>
+        <div style="margin-top: 40px; font-size: 3em;">💜✨💜</div>
+    </div>
+    
+    <footer>
+        <p>Hecho con amor infinito para ti · Feliz aniversario</p>
+        <p style="margin-top: 15px; font-size: 0.9em;">🌙 Nuestra historia continúa...</p>
+    </footer>
+    
 </div>
 
-<!-- scripts mínimos -->
 <script>
-  // función para el botón de descarga (simbólico)
-  function descargarMp3() {
-    alert('💜 Para descargar el MP3: 1. Cómpralo en tu tienda favorita 2. O usa un conversor legal.\n\nMientras tanto, puedes escucharlo en Spotify o Apple Music.');
-  }
-
-  // Generar QR decorativo (SVG) – mismo diseño elegante pero con patrón sutil
-  function generarQRsimbolico() {
-    const svg = document.querySelector('#qrAnimado svg');
-    if (!svg) return;
-    svg.innerHTML = '';
-    const tam = 100, celdas = 21; // para que se vea como QR suave
-    const cell = tam / celdas;
-    // Patrón fijo que simula un QR pero con estética (un código simple)
-    for (let i = 0; i < celdas; i++) {
-      for (let j = 0; j < celdas; j++) {
-        // dibujamos algunos cuadros pseudo-aleatorios (pero fijos para que se vea bonito)
-        if ((i*j) % 3 === 0 || (i+j) % 5 === 2 || (i % 4 === 0 && j % 3 === 0)) {
-          const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-          rect.setAttribute("x", i * cell);
-          rect.setAttribute("y", j * cell);
-          rect.setAttribute("width", cell + 0.5);
-          rect.setAttribute("height", cell + 0.5);
-          rect.setAttribute("fill", "#b290a0");
-          svg.appendChild(rect);
+    // Función para cargar múltiples fotos (foto01, foto02, foto03...)
+    function cargarFotos() {
+        const container = document.getElementById('photos-container');
+        const totalFotos = 20; // Número máximo de fotos a buscar (puedes aumentarlo)
+        
+        for (let i = 1; i <= totalFotos; i++) {
+            // Formato: foto01.jpg, foto02.jpg, foto03.jpg (también soporta .jpeg, .png)
+            const numero = i.toString().padStart(2, '0');
+            
+            // Crear card para cada foto
+            const card = document.createElement('div');
+            card.className = 'photo-card';
+            
+            const img = document.createElement('img');
+            // Intentar con diferentes extensiones
+            img.src = `foto${numero}.jpeg`;
+            img.onerror = function() {
+                // Si no encuentra .jpeg, probar con .jpg
+                this.src = `foto${numero}.jpg`;
+                this.onerror = function() {
+                    // Si no encuentra .jpg, probar con .png
+                    this.src = `foto${numero}.png`;
+                    this.onerror = function() {
+                        // Si no encuentra ninguna, mostrar placeholder
+                        this.src = 'https://via.placeholder.com/300x400/1a1a24/a855f7?text=Foto+' + numero;
+                    }
+                }
+            };
+            img.alt = `Momento ${numero}`;
+            
+            const info = document.createElement('div');
+            info.className = 'photo-info';
+            info.innerHTML = `<p>💜 Momento ${numero} 💜</p>`;
+            
+            card.appendChild(img);
+            card.appendChild(info);
+            container.appendChild(card);
         }
-      }
     }
-    // un corazón en el centro
-    const cx = tam/2, cy = tam/2;
-    const corazon = document.createElementNS("http://www.w3.org/2000/svg", "text");
-    corazon.setAttribute("x", cx);
-    corazon.setAttribute("y", cy+8);
-    corazon.setAttribute("text-anchor", "middle");
-    corazon.setAttribute("font-size", "30");
-    corazon.setAttribute("fill", "#a86f86");
-    corazon.textContent = "💜";
-    svg.appendChild(corazon);
-  }
-
-  window.onload = generarQRsimbolico;
-
-  // funciones video YouTube (para los controles no añadimos botones, pero el iframe ya tiene controles nativos)
-  // Dejamos que el usuario use los controles del reproductor.
+    
+    // Función para cargar múltiples videos (video01, video02, video03...)
+    function cargarVideos() {
+        const container = document.getElementById('videos-container');
+        const totalVideos = 10; // Número máximo de videos a buscar (puedes aumentarlo)
+        
+        for (let i = 1; i <= totalVideos; i++) {
+            const numero = i.toString().padStart(2, '0');
+            
+            const card = document.createElement('div');
+            card.className = 'video-card';
+            
+            const videoContainer = document.createElement('div');
+            videoContainer.className = 'video-container';
+            
+            // Intentar primero como archivo de video local
+            const video = document.createElement('video');
+            video.controls = true;
+            video.preload = 'metadata';
+            
+            // Intentar con diferentes extensiones
+            const sourceMP4 = document.createElement('source');
+            sourceMP4.src = `video${numero}.mp4`;
+            sourceMP4.type = 'video/mp4';
+            
+            const sourceWebM = document.createElement('source');
+            sourceWebM.src = `video${numero}.webm`;
+            sourceWebM.type = 'video/webm';
+            
+            video.appendChild(sourceMP4);
+            video.appendChild(sourceWebM);
+            
+            // Si no hay video local, mostrar mensaje
+            video.onerror = function() {
+                this.outerHTML = `
+                    <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:#1a1a24; color:#a855f7;">
+                        <div style="text-align:center;">
+                            <i class="fas fa-video" style="font-size:3em; margin-bottom:10px;"></i>
+                            <p>Video ${numero} no disponible</p>
+                        </div>
+                    </div>
+                `;
+            };
+            
+            videoContainer.appendChild(video);
+            
+            const info = document.createElement('div');
+            info.className = 'video-info';
+            info.innerHTML = `<p>🎬 Nuestro video ${numero} 🎬</p>`;
+            
+            card.appendChild(videoContainer);
+            card.appendChild(info);
+            container.appendChild(card);
+        }
+    }
+    
+    // Cargar todo cuando la página esté lista
+    document.addEventListener('DOMContentLoaded', function() {
+        cargarFotos();
+        cargarVideos();
+    });
 </script>
 
-<!-- si se quiere cargar API youtube (opcional, por si se quisieran más controles) -->
-<script src="https://www.youtube.com/iframe_api" defer></script>
 </body>
 </html>
