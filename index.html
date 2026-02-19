@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feliz Aniversario | Nuestra historia 💜</title>
+    <title>Nuestro Álbum de Recuerdos | Aniversario ✨</title>
     
-    <!-- Fuentes -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Fuentes elegantes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
@@ -17,61 +21,60 @@
         }
         
         body {
-            font-family: 'Inter', sans-serif;
-            background: #0a0a0f;
-            color: #e0e0e0;
+            font-family: 'Quicksand', sans-serif;
+            background: #fdfaf7;
+            color: #4a4a4a;
             min-height: 100vh;
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 50px 30px;
         }
         
-        /* Header */
-        .hero {
+        /* Header delicado */
+        .header {
             text-align: center;
-            margin-bottom: 50px;
-            opacity: 0;
-            animation: fadeIn 1s ease forwards;
+            margin-bottom: 60px;
         }
         
-        .hero h1 {
+        .header h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 4.5em;
-            background: linear-gradient(135deg, #c084fc, #a855f7, #7e22ce);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 4em;
+            font-weight: 400;
+            color: #b58b9f;
             margin-bottom: 15px;
+            letter-spacing: 1px;
         }
         
-        .hero p {
-            color: #9ca3af;
-            font-size: 1.2em;
+        .header h1 i {
+            font-size: 0.8em;
+            color: #d9b5c5;
+            margin: 0 10px;
+        }
+        
+        .header p {
+            color: #9a9a9a;
+            font-size: 1.1em;
             letter-spacing: 3px;
+            text-transform: uppercase;
         }
         
-        /* Video principal de YouTube (música automática) */
-        .main-video-container {
+        /* Video principal */
+        .video-container {
             max-width: 900px;
             margin: 40px auto 60px;
-            border-radius: 20px;
+            border-radius: 30px;
             overflow: hidden;
-            box-shadow: 0 25px 40px -10px rgba(0, 0, 0, 0.9);
-            border: 2px solid rgba(168, 85, 247, 0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .main-video-container:hover {
-            border-color: #a855f7;
-            box-shadow: 0 30px 50px -10px rgba(168, 85, 247, 0.4);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #f0e0d9;
         }
         
         .video-wrapper {
             position: relative;
             width: 100%;
-            padding-top: 56.25%; /* 16:9 */
+            padding-top: 56.25%;
         }
         
         .video-wrapper iframe {
@@ -83,135 +86,238 @@
             border: none;
         }
         
-        /* Divisor temático */
-        .divider {
-            width: 100px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #a855f7, #c084fc, #a855f7, transparent);
-            margin: 60px auto;
+        /* Mensaje romántico */
+        .love-note {
+            text-align: center;
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 30px;
+            background: #fff9f5;
+            border-radius: 100px 20px 100px 20px;
+            border: 1px solid #f0d9d0;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6em;
+            font-style: italic;
+            color: #b58b9f;
+            line-height: 1.5;
         }
         
-        .section-title {
+        /* TÍTULO DE LA GALERÍA - ESPECIAL */
+        .gallery-title {
             text-align: center;
-            font-family: 'Playfair Display', serif;
-            font-size: 3em;
-            color: #c084fc;
-            margin: 40px 0;
-            font-weight: 400;
+            margin: 80px 0 40px;
             position: relative;
         }
         
-        .section-title i {
-            margin: 0 15px;
-            color: #a855f7;
+        .gallery-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8em;
+            font-weight: 400;
+            color: #b58b9f;
+            display: inline-block;
+            background: #fdfaf7;
+            padding: 0 30px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .gallery-title::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #d9b5c5, transparent);
+            z-index: 1;
+        }
+        
+        /* GALERÍA SORTEADA - DISEÑO ESPECIAL */
+        .masonry-gallery {
+            column-count: 4;
+            column-gap: 25px;
+            margin: 50px 0 30px;
+            position: relative;
+        }
+        
+        /* Efecto de confeti muy sutil */
+        .masonry-gallery::before {
+            content: '✦ ✦ ✦';
+            position: absolute;
+            top: -30px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: #e5c5d0;
+            font-size: 1.2em;
+            letter-spacing: 10px;
+            opacity: 0.5;
+        }
+        
+        /* Cada foto es única, como un recuerdo */
+        .photo-item {
+            break-inside: avoid;
+            margin-bottom: 25px;
+            position: relative;
+            transition: all 0.4s ease;
+            animation: aparecer 0.8s ease-out;
+            animation-fill-mode: backwards;
+        }
+        
+        /* Diferentes animaciones para cada foto (efecto sorteo) */
+        .photo-item:nth-child(1) { animation-delay: 0.1s; }
+        .photo-item:nth-child(2) { animation-delay: 0.3s; }
+        .photo-item:nth-child(3) { animation-delay: 0.5s; }
+        .photo-item:nth-child(4) { animation-delay: 0.7s; }
+        .photo-item:nth-child(5) { animation-delay: 0.2s; }
+        .photo-item:nth-child(6) { animation-delay: 0.4s; }
+        .photo-item:nth-child(7) { animation-delay: 0.6s; }
+        .photo-item:nth-child(8) { animation-delay: 0.8s; }
+        .photo-item:nth-child(9) { animation-delay: 0.15s; }
+        .photo-item:nth-child(10) { animation-delay: 0.35s; }
+        .photo-item:nth-child(11) { animation-delay: 0.55s; }
+        .photo-item:nth-child(12) { animation-delay: 0.75s; }
+        
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(30px) rotate(var(--rot, 0deg));
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) rotate(var(--rot, 0deg));
+            }
+        }
+        
+        /* Estilos variables para cada foto (parecen colocadas al azar) */
+        .photo-item .card {
+            background: white;
+            padding: 12px 12px 20px 12px;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.08);
+            border: 1px solid #f0e0d9;
+            transition: all 0.3s ease;
+            transform: rotate(var(--rot, 0deg)) translateY(var(--y, 0));
+        }
+        
+        /* Rotaciones aleatorias para cada foto */
+        .photo-item:nth-child(3n+1) .card { --rot: -1.8deg; --y: -5px; }
+        .photo-item:nth-child(3n+2) .card { --rot: 2.2deg; --y: 8px; }
+        .photo-item:nth-child(3n+3) .card { --rot: -0.7deg; --y: 3px; }
+        .photo-item:nth-child(5n+4) .card { --rot: 1.5deg; --y: -3px; }
+        .photo-item:nth-child(7n+5) .card { --rot: -2.3deg; --y: 12px; }
+        
+        /* Algunas fotos más grandes que otras (efecto sorteo) */
+        .photo-item:nth-child(4n+1) img { height: 320px; }
+        .photo-item:nth-child(4n+2) img { height: 280px; }
+        .photo-item:nth-child(4n+3) img { height: 350px; }
+        .photo-item:nth-child(4n+4) img { height: 240px; }
+        
+        .photo-item:hover .card {
+            transform: rotate(0deg) translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 30px -8px rgba(181, 139, 159, 0.2);
+            border-color: #d9b5c5;
+        }
+        
+        .photo-item img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 4px;
+            display: block;
+            filter: brightness(1.02) contrast(1.02);
+            transition: all 0.5s ease;
+        }
+        
+        .photo-item:hover img {
+            filter: brightness(1.05) contrast(1.05);
+        }
+        
+        /* Clip o elemento decorativo - como recuerdo pegado */
+        .photo-item .card::before {
+            content: '📌';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.2em;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .photo-item:hover .card::before {
+            opacity: 0.5;
+        }
+        
+        /* Pie de foto */
+        .photo-caption {
+            margin-top: 12px;
+            padding: 0 5px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.9em;
+            color: #8a7a7a;
+        }
+        
+        .photo-caption span {
+            background: #faf0ec;
+            padding: 3px 12px;
+            border-radius: 30px;
             font-size: 0.8em;
         }
         
-        /* Mensajes románticos */
-        .message {
-            max-width: 800px;
-            margin: 0 auto 50px;
-            text-align: center;
-            padding: 40px;
-            background: rgba(18, 18, 24, 0.6);
-            border-radius: 30px;
-            border: 1px solid rgba(168, 85, 247, 0.2);
-            backdrop-filter: blur(8px);
-            transition: transform 0.3s ease;
+        .photo-caption i {
+            color: #d9b5c5;
+            margin-right: 5px;
         }
         
-        .message:hover {
-            transform: translateY(-5px);
-            border-color: rgba(168, 85, 247, 0.5);
+        /* Separador romántico */
+        .romantic-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 70px 0;
         }
         
-        .message h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5em;
-            color: #c084fc;
-            margin-bottom: 20px;
+        .romantic-divider .line {
+            width: 80px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #e5c5d0, transparent);
         }
         
-        .message p {
-            font-size: 1.3em;
-            line-height: 1.8;
-            color: #d0d0d0;
-        }
-        
-        /* GALERÍA DE FOTOS - MÚLTIPLES (foto01, foto02, etc) */
-        .photos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-            margin: 40px 0;
-        }
-        
-        .photo-card {
-            background: rgba(18, 18, 24, 0.4);
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid rgba(168, 85, 247, 0.2);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
-        }
-        
-        .photo-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            border-color: #a855f7;
-            box-shadow: 0 20px 30px -10px rgba(168, 85, 247, 0.4);
-        }
-        
-        .photo-card img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            display: block;
-            border-bottom: 2px solid rgba(168, 85, 247, 0.3);
-        }
-        
-        .photo-info {
-            padding: 15px;
-            text-align: center;
-        }
-        
-        .photo-info p {
-            color: #c084fc;
-            font-weight: 500;
-            letter-spacing: 1px;
-        }
-        
-        /* GALERÍA DE VIDEOS - MÚLTIPLES (video01, video02, etc) */
+        /* SECCIÓN DE VIDEOS (mantenemos estilo cine) */
         .videos-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
+            gap: 35px;
             margin: 40px 0;
         }
         
-        .video-card {
-            background: rgba(10, 10, 15, 0.8);
-            border-radius: 20px;
+        .film-card {
+            background: white;
+            border-radius: 16px;
             overflow: hidden;
-            border: 1px solid rgba(168, 85, 247, 0.3);
+            box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.06);
             transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
+            border: 1px solid #f0e4e0;
         }
         
-        .video-card:hover {
+        .film-card:hover {
             transform: translateY(-5px);
-            border-color: #a855f7;
-            box-shadow: 0 20px 30px -5px rgba(168, 85, 247, 0.3);
+            box-shadow: 0 20px 35px -12px rgba(181, 139, 159, 0.15);
         }
         
-        .video-card .video-container {
+        .film-preview {
             position: relative;
             width: 100%;
             padding-top: 56.25%;
-            background: #000;
+            background: #f5f0ed;
         }
         
-        .video-card .video-container iframe,
-        .video-card .video-container video {
+        .film-preview iframe,
+        .film-preview video {
             position: absolute;
             top: 0;
             left: 0;
@@ -220,250 +326,311 @@
             border: none;
         }
         
-        .video-info {
-            padding: 15px;
-            text-align: center;
-            border-top: 1px solid rgba(168, 85, 247, 0.2);
+        .film-tag {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.8em;
+            color: #b58b9f;
+            border: 1px solid #f0d5d0;
         }
         
-        .video-info p {
-            color: #c084fc;
-            font-size: 1.1em;
+        .film-info {
+            padding: 20px;
+        }
+        
+        .film-info h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4em;
+            font-weight: 400;
+            color: #4a4a4a;
+            margin-bottom: 6px;
         }
         
         /* Mensaje final */
         .final-message {
             text-align: center;
-            padding: 80px 30px;
-            margin: 60px 0;
-            background: linear-gradient(145deg, rgba(18, 18, 24, 0.8), rgba(10, 10, 15, 0.9));
-            border-radius: 50px;
-            border: 1px solid rgba(168, 85, 247, 0.3);
+            padding: 70px 30px;
+            margin: 80px 0 40px;
+            background: #fff9f5;
+            border-radius: 120px 30px 120px 30px;
+            border: 2px solid #f0d9d0;
         }
         
         .final-message h3 {
             font-family: 'Playfair Display', serif;
             font-size: 3.5em;
-            color: #a855f7;
+            font-weight: 400;
+            color: #b58b9f;
             margin-bottom: 20px;
         }
         
         .final-message p {
-            font-size: 1.5em;
-            color: #b0b0b0;
-            max-width: 700px;
-            margin: 0 auto;
+            font-size: 1.3em;
+            color: #6a6a6a;
         }
         
         /* Footer */
         footer {
             text-align: center;
-            padding: 50px 0 30px;
-            color: #6b7280;
-            border-top: 2px solid rgba(168, 85, 247, 0.1);
             margin-top: 60px;
-        }
-        
-        /* Animaciones */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            padding: 40px 0 20px;
+            color: #a0a0a0;
+            border-top: 1px solid #f0e0d9;
         }
         
         /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 3em; }
-            .section-title { font-size: 2.2em; }
-            .message h2 { font-size: 2em; }
-            .message p { font-size: 1.1em; }
-            .final-message h3 { font-size: 2.5em; }
+        @media (max-width: 1000px) {
+            .masonry-gallery {
+                column-count: 3;
+            }
         }
         
-        /* Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0a0a0f; }
-        ::-webkit-scrollbar-thumb { background: #2d2d3a; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #a855f7; }
+        @media (max-width: 700px) {
+            .masonry-gallery {
+                column-count: 2;
+            }
+            .header h1 {
+                font-size: 2.8em;
+            }
+            .love-note {
+                font-size: 1.3em;
+            }
+        }
+        
+        @media (max-width: 500px) {
+            .masonry-gallery {
+                column-count: 1;
+            }
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     
-    <!-- HEADER ROMÁNTICO -->
-    <div class="hero">
-        <h1>Feliz Aniversario</h1>
-        <p>NUESTRA HISTORIA DE AMOR</p>
+    <!-- HEADER -->
+    <div class="header">
+        <h1>
+            <i class="fas fa-star"></i>
+            nuestro álbum
+            <i class="fas fa-star"></i>
+        </h1>
+        <p>RECUERDOS QUE ATESORO</p>
     </div>
     
-    <!-- VIDEO PRINCIPAL CON MÚSICA (AUTOPLAY) -->
-    <div class="main-video-container">
+    <!-- VIDEO PRINCIPAL -->
+    <div class="video-container">
         <div class="video-wrapper">
             <iframe 
-                src="https://www.youtube.com/embed/eM213aMKTHG?autoplay=1&rel=0"
-                title="Need You Now - Lady Antebellum"
+                src="https://www.youtube.com/embed/VNk-IsicClw?autoplay=1&rel=0"
+                title="Right Here, Right Now"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen>
             </iframe>
         </div>
     </div>
     
-    <!-- MENSAJE ROMÁNTICO -->
-    <div class="message">
-        <h2>Mi persona favorita</h2>
-        <p>
-            "Cada momento a tu lado es un regalo. En tus ojos encontré mi hogar, 
-            en tu sonrisa mi paz, y en tu amor mi razón para sonreír cada día."
-        </p>
+    <!-- NOTA DE AMOR -->
+    <div class="love-note">
+        "Cada foto guarda un pedacito de nosotros,<br>
+        un momento que el tiempo no podrá borrar."
     </div>
     
-    <div class="divider"></div>
-    
-    <!-- SECCIÓN DE FOTOS (foto01, foto02, foto03...) -->
-    <h2 class="section-title">
-        <i class="fas fa-camera"></i> NUESTRAS FOTOS <i class="fas fa-camera"></i>
-    </h2>
-    
-    <div class="photos-grid" id="photos-container">
-        <!-- Las fotos se cargarán automáticamente desde foto01 hasta foto99 -->
+    <!-- TÍTULO GALERÍA -->
+    <div class="gallery-title">
+        <h2>✧ recuerdos al azar ✧</h2>
     </div>
     
-    <div class="divider"></div>
+    <!-- GALERÍA SORTEADA - ESTILO MASONRY -->
+    <div class="masonry-gallery" id="photos-container">
+        <!-- Las fotos se cargarán aquí -->
+    </div>
     
-    <!-- SECCIÓN DE VIDEOS (video01, video02, video03...) -->
-    <h2 class="section-title">
-        <i class="fas fa-video"></i> NUESTROS VIDEOS <i class="fas fa-video"></i>
-    </h2>
+    <!-- SEGUNDA NOTA -->
+    <div class="love-note" style="margin-top: 60px;">
+        "Como si el destino hubiera querido<br>
+        que todos estos momentos fueran nuestros."
+    </div>
+    
+    <!-- DIVISOR -->
+    <div class="romantic-divider">
+        <div class="line"></div>
+        <i class="fas fa-heart" style="color: #d9b5c5;"></i>
+        <i class="fas fa-camera" style="color: #d9b5c5;"></i>
+        <i class="fas fa-heart" style="color: #d9b5c5;"></i>
+        <div class="line"></div>
+    </div>
+    
+    <!-- SECCIÓN DE VIDEOS -->
+    <div class="gallery-title">
+        <h2>✧ nuestras escenas ✧</h2>
+    </div>
     
     <div class="videos-grid" id="videos-container">
-        <!-- Los videos se cargarán automáticamente desde video01 hasta video99 -->
-    </div>
-    
-    <div class="divider"></div>
-    
-    <!-- SEGUNDO MENSAJE -->
-    <div class="message">
-        <h2>Eres único</h2>
-        <p>
-            "Entre 8 mil millones de personas, yo volvería a elegirte 
-            una y otra vez, en cada vida, en cada universo posible."
-        </p>
+        <!-- Los videos se cargarán aquí -->
     </div>
     
     <!-- MENSAJE FINAL -->
     <div class="final-message">
-        <h3>Gracias por existir</h3>
+        <h3>feliz aniversario</h3>
         <p>
-            Por todos los momentos que hemos vivido<br>
-            y por todos los que nos quedan por compartir.
+            De todas las fotos, de todos los momentos,<br>
+            el que más me gusta es el que paso a tu lado.
         </p>
-        <div style="margin-top: 40px; font-size: 3em;">💜✨💜</div>
+        <div style="margin-top: 30px; font-size: 2em;">
+            ✨ 💜 ✨
+        </div>
     </div>
     
     <footer>
-        <p>Hecho con amor infinito para ti · Feliz aniversario</p>
-        <p style="margin-top: 15px; font-size: 0.9em;">🌙 Nuestra historia continúa...</p>
+        <p>hecho con amor, recuerdo a recuerdo</p>
+        <p style="margin-top: 8px;">cada foto es un tesoro · cada momento contigo</p>
     </footer>
     
 </div>
 
 <script>
-    // Función para cargar múltiples fotos (foto01, foto02, foto03...)
+    // Frases románticas para las fotos
+    const frases = [
+        "el día que sonreíste así",
+        "nuestra primera aventura",
+        "cómplices",
+        "atardecer juntos",
+        "tu mirada",
+        "locuras que recuerdo",
+        "abrazos que duran",
+        "un café y tú",
+        "nuestra canción",
+        "risas infinitas",
+        "el mejor plan: contigo",
+        "simple y perfecto",
+        "cuando todo empezó",
+        "tu lugar favorito",
+        "mi lugar favorito: tú",
+        "magia cotidiana",
+        "un día especial",
+        "solo nosotros",
+        "para siempre en mi memoria",
+        "este momento"
+    ];
+    
+    // Función para generar un año aleatorio
+    function añoAleatorio() {
+        const años = ['2022', '2023', '2024', '2025'];
+        return años[Math.floor(Math.random() * años.length)];
+    }
+    
+    // Función para cargar fotos con estilo sorteado
     function cargarFotos() {
         const container = document.getElementById('photos-container');
-        const totalFotos = 20; // Número máximo de fotos a buscar (puedes aumentarlo)
+        const totalFotos = 20; // Puedes aumentarlo
         
         for (let i = 1; i <= totalFotos; i++) {
-            // Formato: foto01.jpg, foto02.jpg, foto03.jpg (también soporta .jpeg, .png)
             const numero = i.toString().padStart(2, '0');
             
-            // Crear card para cada foto
+            const photoItem = document.createElement('div');
+            photoItem.className = 'photo-item';
+            
             const card = document.createElement('div');
-            card.className = 'photo-card';
+            card.className = 'card';
             
             const img = document.createElement('img');
-            // Intentar con diferentes extensiones
             img.src = `foto${numero}.jpeg`;
             img.onerror = function() {
-                // Si no encuentra .jpeg, probar con .jpg
                 this.src = `foto${numero}.jpg`;
                 this.onerror = function() {
-                    // Si no encuentra .jpg, probar con .png
                     this.src = `foto${numero}.png`;
                     this.onerror = function() {
-                        // Si no encuentra ninguna, mostrar placeholder
-                        this.src = 'https://via.placeholder.com/300x400/1a1a24/a855f7?text=Foto+' + numero;
+                        this.src = 'https://via.placeholder.com/400x500/faf0ec/b58b9f?text=📸';
                     }
                 }
             };
-            img.alt = `Momento ${numero}`;
+            img.alt = `Recuerdo ${numero}`;
             
-            const info = document.createElement('div');
-            info.className = 'photo-info';
-            info.innerHTML = `<p>💜 Momento ${numero} 💜</p>`;
+            const caption = document.createElement('div');
+            caption.className = 'photo-caption';
+            
+            // Seleccionar frase aleatoria
+            const fraseRandom = frases[Math.floor(Math.random() * frases.length)];
+            
+            caption.innerHTML = `
+                <span><i class="far fa-calendar-alt"></i> ${añoAleatorio()}</span>
+                <span><i class="far fa-heart"></i> ${fraseRandom}</span>
+            `;
             
             card.appendChild(img);
-            card.appendChild(info);
-            container.appendChild(card);
+            card.appendChild(caption);
+            photoItem.appendChild(card);
+            container.appendChild(photoItem);
         }
     }
     
-    // Función para cargar múltiples videos (video01, video02, video03...)
+    // Función para cargar videos
     function cargarVideos() {
         const container = document.getElementById('videos-container');
-        const totalVideos = 10; // Número máximo de videos a buscar (puedes aumentarlo)
+        const totalVideos = 10;
+        
+        const titulos = [
+            "nuestra película", "un día cualquiera", "risas",
+            "bailando", "el mejor momento", "tú y yo",
+            "magia", "nuestra historia", "sonrisas", "eternidad"
+        ];
         
         for (let i = 1; i <= totalVideos; i++) {
             const numero = i.toString().padStart(2, '0');
             
             const card = document.createElement('div');
-            card.className = 'video-card';
+            card.className = 'film-card';
             
-            const videoContainer = document.createElement('div');
-            videoContainer.className = 'video-container';
+            const preview = document.createElement('div');
+            preview.className = 'film-preview';
             
-            // Intentar primero como archivo de video local
+            const tag = document.createElement('div');
+            tag.className = 'film-tag';
+            tag.innerHTML = '<i class="far fa-clock"></i> escena ' + numero;
+            
             const video = document.createElement('video');
             video.controls = true;
             video.preload = 'metadata';
             
-            // Intentar con diferentes extensiones
-            const sourceMP4 = document.createElement('source');
-            sourceMP4.src = `video${numero}.mp4`;
-            sourceMP4.type = 'video/mp4';
+            const source = document.createElement('source');
+            source.src = `video${numero}.mp4`;
+            source.type = 'video/mp4';
             
-            const sourceWebM = document.createElement('source');
-            sourceWebM.src = `video${numero}.webm`;
-            sourceWebM.type = 'video/webm';
+            video.appendChild(source);
             
-            video.appendChild(sourceMP4);
-            video.appendChild(sourceWebM);
-            
-            // Si no hay video local, mostrar mensaje
             video.onerror = function() {
                 this.outerHTML = `
-                    <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:#1a1a24; color:#a855f7;">
+                    <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:#faf5f2; color:#b58b9f;">
                         <div style="text-align:center;">
-                            <i class="fas fa-video" style="font-size:3em; margin-bottom:10px;"></i>
-                            <p>Video ${numero} no disponible</p>
+                            <i class="fas fa-film" style="font-size:2.5em; opacity:0.5;"></i>
+                            <p style="margin-top:10px;">🎬</p>
                         </div>
                     </div>
                 `;
             };
             
-            videoContainer.appendChild(video);
+            preview.appendChild(tag);
+            preview.appendChild(video);
             
             const info = document.createElement('div');
-            info.className = 'video-info';
-            info.innerHTML = `<p>🎬 Nuestro video ${numero} 🎬</p>`;
+            info.className = 'film-info';
+            info.innerHTML = `
+                <h4>${titulos[i-1]}</h4>
+                <p style="color:#8a8a8a; font-size:0.9em;"><i class="far fa-star"></i> video ${numero}</p>
+            `;
             
-            card.appendChild(videoContainer);
+            card.appendChild(preview);
             card.appendChild(info);
             container.appendChild(card);
         }
     }
     
-    // Cargar todo cuando la página esté lista
+    // Iniciar todo
     document.addEventListener('DOMContentLoaded', function() {
         cargarFotos();
         cargarVideos();
